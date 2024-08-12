@@ -1,22 +1,26 @@
 const mongoose = require('mongoose');
 const Students=new mongoose.Schema({
-    name:{
+    Student_name:{
         type:String,
         required:true
     },
-    age:{
+    Student_DOB:{
+        type:Date,
+        required:true
+    },
+    Student_age:{
         type:Number,
         required:true
     },
-    roll:{
+    Student_roll:{
         type:Number,
         required:true
     },
-    email:{
+    Student_email:{
         type:String,
         required:true
     },
-    currentStudent:{
+    isCurrentStudent:{
         type:Boolean,
         required:true,
         default:true
