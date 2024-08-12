@@ -1,6 +1,18 @@
 const express=require('express');
 const router=express.Router();
 const Students=require('../models/Students');
+router.put('/:roll',async(req,res)=>{
+    try{
+        const student=await Students.find({roll:req.params.roll});
+        student[0].name=req.body.name;
+        student[0].age=req.body.age;
+        student[0].email=req.body.email;
+        const result=await student[0].save();
+        res.json(result);
+    }catch(err){
+        res.send('Error');
+    }
+})
 router.get('/',async(req,res)=>{
     try{
         const students=await Students.find();
