@@ -2,7 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = require("./Controllers/routes");
 const app = express();
-const url = "mongodb://localhost:27017/crud";
+// const url = "mongodb://localhost:27017/crud";
+const url = "mongodb://127.0.0.1:27020,127.0.0.1:27021,127.0.0.1:27022/crud?replicaSet=m101";
 mongoose
   .connect(url)
   .then(() => console.log("connected to db"))
