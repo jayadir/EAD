@@ -28,7 +28,7 @@ exports.addStudent = async (req, res) => {
     });
     try {
         const result = await student.save();
-        res.json(result);
+        res.status(200).json(result);
         console.log(result);
     } catch (err) {
         res.send('Error');
