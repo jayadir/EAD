@@ -1,34 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 function App() {
-  const [seconds, setSeconds] = useState(0);
+  const [seconds, setSeconds] = useState(3658);
+  const [hours,setHours]=useState(0)
+  const [mins,setMins]=useState(0)
   const [isActive, setIsActive] = useState(false);
-
   useEffect(() => {
     let interval = null;
     if (isActive) {
       interval = setInterval(() => {
         setSeconds(seconds => seconds + 1);
       }, 1000);
-    } else if (!isActive && seconds !== 0) {
-      clearInterval(interval);
-    }
+    } 
     return () => clearInterval(interval);
-  }, [isActive, seconds]);
-
+  }, [isActive]);
   const toggle = () => {
     setIsActive(!isActive);
   };
-
   const reset = () => {
     setSeconds(0);
     setIsActive(false);
   };
-
   return (
     <div className="timer">
       <div className="time">
-        {seconds}s
+        {Math.floor(seconds/3600)}:{Math.floor((seconds%3600)/60)}:{seconds%60}s
       </div>
       <div className="row">
         <button className={`button button-primary button-primary-${isActive ? 'active' : 'inactive'}`} onClick={toggle}>
@@ -41,5 +37,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
